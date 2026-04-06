@@ -165,28 +165,29 @@ const StoreData = (() => {
     },
 
     {
-      id: "dm-007",
-      slug: "enterizo-marea",
-      name: "Enterizo Marea",
-      gender: "women",
-      category: "enterizos",
-      collection: "nuevo",
-      price: 80000,
-      oldPrice: null,
-      badge: "Nuevo",
-      featured: true,
-      description:
-        "Enterizo femenino de línea limpia, visual refinado y una lectura moderna para el lanzamiento inicial.",
-      sizes: [
-        { label: "Talla U", active: true },
-      ],
-      images: [
-        "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1593.jpg",
-        "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1596.jpg",
-      ],
-      imageAlt: "Enterizo Marea de DOS MARES",
-      gradient: "linear-gradient(145deg,#dcc8b6 0%,#bf9f87 50%,#8e6d58 100%)",
-    },
+  id: "dm-007",
+  slug: "enterizo-marea",
+  name: "Enterizo Marea",
+  gender: "women",
+  category: "enterizos",
+  collection: "nuevo",
+  price: 80000,
+  oldPrice: null,
+  badge: "Nuevo",
+  featured: true,
+  soldOut: true, 
+  description:
+    "Enterizo femenino de línea limpia, visual refinado y una lectura moderna para el lanzamiento inicial.",
+  sizes: [
+    { label: "Talla U", active: false }, 
+  ],
+  images: [
+    "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1593.jpg",
+    "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1596.jpg",
+  ],
+  imageAlt: "Enterizo Marea de DOS MARES",
+  gradient: "linear-gradient(145deg,#dcc8b6 0%,#bf9f87 50%,#8e6d58 100%)",
+},
 
     {
       id: "dm-008",
