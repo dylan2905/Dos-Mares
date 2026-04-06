@@ -388,14 +388,24 @@ const TiendaPage = (() => {
       const sliderId = `card-${product.id}`;
       const activeSizes = getProductActiveSizes(product);
       const hasMultipleSizes = activeSizes.length > 1;
-      const addLabel = hasMultipleSizes ? "Elegir talla" : "Agregar al carrito";
+      let addLabel;
+      if (isSoldOut) {
+        addLabel = "Agotado";
+      } else if (hasMultipleSizes) {
+        addLabel = "Ver producto";
+      } else {
+        addLabel = "Agregar al carrito";
+      }
 
       return `
         <article class="product-card reveal ${index % 3 === 1 ? "d1" : index % 3 === 2 ? "d2" : ""}">
           <div class="product-media" data-slider-root="${sliderId}">
             <div class="product-media-bg" style="background:${visual.gradient};"></div>
             ${createSliderMarkup(visual.images, visual.alt, sliderId, "data-slider-dot", "data-slider-id")}
-            ${product.badge ? `<span class="product-tag">${product.badge}</span>` : ""}
+           ${isSoldOut 
+              ? `<span class="product-tag">Agotado</span>` 
+              : (product.badge ? `<span class="product-tag">${product.badge}</span>` : "")
+            }
 
             <div class="product-actions-top">
               <button class="icon-circle ${wished ? "active" : ""}" type="button" aria-label="Guardar en favoritos" data-action="toggle-wishlist" data-id="${product.id}">
@@ -419,8 +429,9 @@ const TiendaPage = (() => {
             </div>
 
             <div class="product-footer">
-              <button class="btn btn-add" type="button" data-action="${hasMultipleSizes ? "quick-view" : "add-to-cart"}" data-id="${product.id}">
+              <button class="btn btn-add" type="button" data-action="${isSoldOut ? "" : (hasMultipleSizes ? "quick-view" : "add-to-cart")}" data-id="${product.id}">
                 ${addLabel}
+                ${isSoldOut ? "disabled" : ""}
               </button>
               <button class="btn btn-view" type="button" data-action="quick-view" data-id="${product.id}" aria-label="Ver detalle rápido">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -858,8 +869,9 @@ const TiendaPage = (() => {
             <p class="product-desc">${product.description}</p>
 
             <div class="product-footer">
-              <button class="btn btn-add" type="button" data-action="${hasMultipleSizes ? "quick-view" : "add-to-cart"}" data-id="${product.id}">
+              <button class="btn btn-add" type="button" data-action="${isSoldOut ? "" : (hasMultipleSizes ? "quick-view" : "add-to-cart")}" data-id="${product.id}">
                 ${addLabel}
+                ${isSoldOut ? "disabled" : ""}
               </button>
               <button class="btn btn-view" type="button" data-action="quick-view" data-id="${product.id}" aria-label="Ver detalle rápido">+</button>
             </div>
