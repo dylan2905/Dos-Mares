@@ -383,6 +383,7 @@ const TiendaPage = (() => {
 
     refs.productGrid.innerHTML = items.map((product, index) => {
       const wished = Wishlist.has(product.id);
+      const isSoldOut = product.soldOut === true;
       const visual = StoreData.resolveProductVisual(product);
       const sliderId = `card-${product.id}`;
       const activeSizes = getProductActiveSizes(product);
