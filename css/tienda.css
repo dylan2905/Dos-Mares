@@ -476,7 +476,7 @@ HERO
   font-size:9px;
   letter-spacing:.36em;
   text-transform:uppercase;
-  color:var(--sand);
+  color:#8a7560;
 }
 
 .hero-title,
@@ -698,7 +698,7 @@ STORY BAND
 .editorial-text{
   font-size:14px;
   line-height:2;
-  color:rgba(199,183,163,.74);
+  color:#8a7560;
 }
 
 .editorial-actions{
