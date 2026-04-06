@@ -178,9 +178,7 @@ const StoreData = (() => {
       description:
         "Enterizo femenino de línea limpia, visual refinado y una lectura moderna para el lanzamiento inicial.",
       sizes: [
-        { label: "S", active: false },
-        { label: "M", active: false },
-        { label: "L", active: true },
+        { label: "Talla U", active: true },
       ],
       images: [
         "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1593.jpg",
