@@ -897,3 +897,17 @@ body.no-scroll{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-4px)}
 }
+
+.product-card.sold-out{
+  opacity:.55;
+}
+
+.product-card.sold-out .btn-add{
+  background:#d6cec4;
+  color:#6f5c4d;
+  cursor:not-allowed;
+}
+
+.product-card.sold-out .product-media::after{
+  background:rgba(0,0,0,.35);
+}
