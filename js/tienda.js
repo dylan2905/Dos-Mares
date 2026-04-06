@@ -735,7 +735,7 @@ const TiendaPage = (() => {
       <h3 class="quick-name">${product.name}</h3>
       <p class="quick-desc">${product.description}</p>
 
-      <div style="font-size:18px;font-weight:500;margin-bottom:14px;">
+      <div class="quick-price">
         ${Utils.formatCOP(product.price)}
         ${product.oldPrice ? `<span class="product-old-price" style="font-size:13px;">${Utils.formatCOP(product.oldPrice)}</span>` : ""}
       </div>
