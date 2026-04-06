@@ -847,6 +847,31 @@ body.no-scroll{
     max-width:none;
   }
 
+
+  .quick-name{
+  font-size:42px;
+  letter-spacing:.02em;
+}
+
+.quick-desc{
+  margin-bottom:18px;
+}
+
+.quick-price{
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:18px;
+}
+
+.quick-actions{
+  margin-top:20px;
+}
+
+.quick-actions .btn-add{
+  min-height:54px;
+  font-size:11px;
+  letter-spacing:.28em;
+}
   .whatsapp-btn{
     right:18px;
     bottom:18px;
