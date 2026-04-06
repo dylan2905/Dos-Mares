@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOS MARES — Política de privacidad</title>
+  <meta
+    name="description"
+    content="Consulta la política de privacidad de DOS MARES y conoce el tratamiento general de los datos compartidos por los usuarios."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/tienda.css" />
+
+  <style>
+    .legal-hero{
+      background:linear-gradient(145deg,#f4f0eb 0%, #efe7de 50%, #e4d4c1 100%);
+      padding:72px 0 64px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .legal-hero-title{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(40px,5vw,64px);
+      line-height:1;
+      letter-spacing:.04em;
+      margin:10px 0 14px;
+    }
+
+    .legal-hero-text{
+      max-width:760px;
+      font-size:14px;
+      line-height:1.95;
+      color:var(--mid);
+    }
+
+    .legal-wrap{
+      max-width:920px;
+    }
+
+    .legal-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:28px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .legal-card h2{
+      font-family:"Cormorant Garamond",serif;
+      font-size:34px;
+      line-height:1.05;
+      margin:26px 0 14px;
+    }
+
+    .legal-card h2:first-of-type{
+      margin-top:0;
+    }
+
+    .legal-card p,
+    .legal-card li{
+      font-size:14px;
+      line-height:1.95;
+      color:var(--mid);
+    }
+
+    .legal-card ul{
+      list-style:disc;
+      padding-left:20px;
+      margin-top:10px;
+    }
+
+    .legal-card strong{
+      color:var(--dark);
+      font-weight:500;
+    }
+
+    .legal-note{
+      margin-top:18px;
+      padding:18px 20px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:var(--off);
+      font-size:13px;
+      line-height:1.85;
+      color:var(--mid);
+    }
+
+    @media (max-width: 640px){
+      .legal-card{
+        padding:22px 18px;
+      }
+
+      .legal-card h2{
+        font-size:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement-bar">
+    <div class="container">
+      <div class="announcement-inner">
+        <span>Nueva colección Verano 2026</span>
+        <span>—</span>
+        <span>Envío gratis sobre $150.000</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay></div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <button
+          class="mobile-toggle"
+          type="button"
+          data-mobile-toggle
+          aria-label="Abrir menú"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav-left" aria-label="Navegación principal">
+          <div class="nav-item"><a class="nav-link" href="../tienda.html?filter=women">Mujer</a></div>
+          <div class="nav-item"><a class="nav-link" href="../tienda.html?filter=men">Hombre</a></div>
+          <div class="nav-item"><a class="nav-link" href="../tienda.html">Tienda</a></div>
+          <div class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></div>
+        </nav>
+
+        <a class="site-logo" href="../index.html" aria-label="Ir al inicio de DOS MARES">
+          <img src="../assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <div class="nav-right">
+          <a class="nav-icon-btn" href="../tienda.html" aria-label="Buscar productos">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"></circle>
+              <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            </svg>
+          </a>
+
+          <a class="nav-icon-btn" href="../carrito.html" aria-label="Ver carrito">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7H20L18.5 19H5.5L4 7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+              <path d="M9 7V5.8C9 4.25 10.25 3 11.8 3H12.2C13.75 3 15 4.25 15 5.8V7" stroke="currentColor" stroke-width="1.6"></path>
+            </svg>
+            <span
+              data-cart-count
+              style="display:none;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--crimson);color:#fff;font-size:10px;align-items:center;justify-content:center;"
+            >0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" data-mobile-menu aria-label="Menú móvil">
+    <div class="mobile-menu-inner">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
+        <a class="site-logo" href="../index.html" aria-label="DOS MARES">
+          <img src="../assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <button
+          type="button"
+          data-mobile-close
+          aria-label="Cerrar menú"
+          style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a href="../tienda.html?filter=women">Mujer</a>
+      <a href="../tienda.html?filter=men">Hombre</a>
+      <a href="../tienda.html">Tienda</a>
+      <a href="../index.html">Inicio</a>
+      <a href="../carrito.html">Carrito</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="envios.html">Envíos</a>
+      <a href="devoluciones.html">Devoluciones</a>
+      <a href="terminos.html">Términos</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="legal-hero">
+      <div class="container">
+        <span class="eyebrow">Información legal</span>
+        <h1 class="legal-hero-title">Política de privacidad</h1>
+        <p class="legal-hero-text">
+          Esta política describe de forma general cómo DOS MARES puede recopilar, usar y proteger la información compartida por los usuarios a través del sitio, formularios o canales de atención.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="legal-wrap">
+          <article class="legal-card reveal">
+            <h2>1. Información que puede recopilarse</h2>
+            <p>
+              DOS MARES puede recibir información que el usuario comparte de manera voluntaria, como nombre, correo electrónico, número de contacto, dirección de entrega y cualquier otro dato necesario para responder consultas, gestionar pedidos o brindar atención comercial.
+            </p>
+
+            <h2>2. Finalidad del tratamiento</h2>
+            <p>
+              La información suministrada podrá ser utilizada para:
+            </p>
+            <ul>
+              <li>Atender solicitudes, preguntas o requerimientos del usuario.</li>
+              <li>Gestionar pedidos, confirmaciones y seguimiento comercial.</li>
+              <li>Enviar comunicaciones relacionadas con productos, novedades o lanzamientos, cuando aplique.</li>
+              <li>Mejorar la experiencia general de navegación y servicio.</li>
+            </ul>
+
+            <h2>3. Conservación y cuidado de la información</h2>
+            <p>
+              DOS MARES adopta medidas razonables para proteger la información suministrada por los usuarios y limitar su uso a los fines relacionados con la operación de la marca, la atención comercial y la gestión del sitio.
+            </p>
+
+            <h2>4. Compartir información con terceros</h2>
+            <p>
+              La información podrá ser compartida únicamente cuando resulte necesario para cumplir con procesos asociados a la operación, como logística, pagos, soporte técnico o requerimientos legales aplicables. En todo caso, se buscará que el tratamiento mantenga una finalidad legítima y relacionada con la prestación del servicio.
+            </p>
+
+            <h2>5. Formularios y suscripciones</h2>
+            <p>
+              Cuando el usuario diligencia formularios, se suscribe a comunicaciones o escribe por medios de contacto, entiende que la información compartida podrá ser utilizada para responderle, dar seguimiento a su solicitud o enviar información relacionada con la marca y su actividad comercial.
+            </p>
+
+            <h2>6. Navegación y datos técnicos</h2>
+            <p>
+              El sitio puede recopilar información técnica básica derivada de la navegación, como tipo de dispositivo, navegador, páginas visitadas o interacciones generales, con fines de funcionamiento, mejora y análisis del comportamiento del sitio.
+            </p>
+
+            <h2>7. Derechos del usuario</h2>
+            <p>
+              El usuario podrá solicitar la actualización, corrección o supresión de su información, así como realizar consultas relacionadas con el tratamiento general de sus datos, a través de los canales de contacto habilitados por DOS MARES.
+            </p>
+
+            <h2>8. Cambios en esta política</h2>
+            <p>
+              DOS MARES podrá actualizar esta política en cualquier momento cuando lo considere necesario para reflejar cambios operativos, técnicos, comerciales o regulatorios.
+            </p>
+
+            <h2>9. Contacto</h2>
+            <p>
+              Si necesitas realizar una consulta relacionada con privacidad, tratamiento de datos o uso de tu información, puedes comunicarte con la marca a través de los canales oficiales disponibles.
+            </p>
+
+            <div class="legal-note">
+              <strong>Nota:</strong> Esta política funciona como base general informativa. Para una versión definitiva adaptada a tu operación real y a la normativa aplicable, conviene revisarla con apoyo legal y ajustarla según formularios, pasarelas de pago, campañas y herramientas de análisis que realmente vayas a usar.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+          <p class="footer-copy">
+            Entre dos mares nace una nueva forma de vestir. Piezas editoriales con una presencia sobria, moderna y costera.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tienda</h4>
+          <a href="../tienda.html?filter=women">Mujer</a>
+          <a href="../tienda.html?filter=men">Hombre</a>
+          <a href="../tienda.html?filter=nuevo">Nueva colección</a>
+          <a href="../tienda.html">Ver todo</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ayuda</h4>
+          <a href="envios.html">Envíos</a>
+          <a href="devoluciones.html">Devoluciones</a>
+          <a href="terminos.html">Términos</a>
+          <a href="privacidad.html">Privacidad</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Marca</h4>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="../index.html">Inicio</a>
+          <a href="../carrito.html">Carrito</a>
+          <a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>2026 DOS MARES — Todos los derechos reservados</span>
+        <span>Entre dos mares.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      UI.init();
+    });
+  </script>
+</body>
+</html>

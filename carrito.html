@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOS MARES — Carrito</title>
+  <meta
+    name="description"
+    content="Revisa tu carrito de DOS MARES y finaliza tu pedido por WhatsApp."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/tienda.css" />
+
+  <style>
+    .cart-page-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:34px;
+      align-items:start;
+    }
+
+    .cart-list{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:22px;
+    }
+
+    .cart-list-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:20px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .cart-list-title{
+      font-family:"Cormorant Garamond",serif;
+      font-size:36px;
+      line-height:1;
+      letter-spacing:.04em;
+    }
+
+    .cart-list-count{
+      font-size:12px;
+      color:var(--mid);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .cart-items{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .cart-item-card{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:16px;
+      align-items:start;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .cart-item-card:last-child{
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .cart-item-media{
+      background:var(--off);
+      border-radius:var(--radius-md);
+      overflow:hidden;
+      min-height:150px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .cart-item-media img{
+      width:100%;
+      height:150px;
+      object-fit:cover;
+    }
+
+    .cart-item-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .cart-item-name{
+      font-family:"Cormorant Garamond",serif;
+      font-size:28px;
+      line-height:1.05;
+      margin-bottom:6px;
+    }
+
+    .cart-item-meta{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--mid);
+    }
+
+    .cart-item-desc{
+      font-size:13px;
+      line-height:1.8;
+      color:var(--mid);
+      margin:12px 0 14px;
+      max-width:520px;
+    }
+
+    .cart-item-footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .cart-item-total{
+      font-size:14px;
+      color:var(--dark);
+      font-weight:400;
+    }
+
+    .cart-remove-btn{
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--mid);
+      cursor:pointer;
+      transition:color var(--transition-fast);
+    }
+
+    .cart-remove-btn:hover{
+      color:var(--crimson);
+    }
+
+    .cart-summary-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:22px;
+      position:sticky;
+      top:110px;
+    }
+
+    .cart-summary-title{
+      font-family:"Cormorant Garamond",serif;
+      font-size:34px;
+      line-height:1;
+      letter-spacing:.04em;
+      margin-bottom:18px;
+    }
+
+    .cart-summary-actions{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .cart-summary-note{
+      margin-top:14px;
+      font-size:12px;
+      line-height:1.8;
+      color:var(--mid);
+    }
+
+    @media (max-width: 980px){
+      .cart-page-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cart-summary-box{
+        position:relative;
+        top:auto;
+      }
+    }
+
+    @media (max-width: 640px){
+      .cart-list,
+      .cart-summary-box{
+        padding:18px;
+      }
+
+      .cart-item-card{
+        grid-template-columns:1fr;
+      }
+
+      .cart-item-media,
+      .cart-item-media img{
+        min-height:220px;
+        height:220px;
+      }
+
+      .cart-item-name{
+        font-size:24px;
+      }
+
+      .cart-list-title,
+      .cart-summary-title{
+        font-size:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement-bar">
+    <div class="container">
+      <div class="announcement-inner">
+        <span>Nueva colección Verano 2026</span>
+        <span>—</span>
+        <span>Envío gratis sobre $150.000</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay></div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <button
+          class="mobile-toggle"
+          type="button"
+          data-mobile-toggle
+          aria-label="Abrir menú"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav-left" aria-label="Navegación principal">
+          <div class="nav-item">
+            <a class="nav-link" href="tienda.html?filter=women">Mujer</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="tienda.html?filter=men">Hombre</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="tienda.html">Tienda</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="pages/nosotros.html">Nosotros</a>
+          </div>
+        </nav>
+
+        <a class="site-logo" href="index.html" aria-label="Ir al inicio de DOS MARES">
+          <img src="assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <div class="nav-right">
+          <a class="nav-icon-btn" href="tienda.html" aria-label="Buscar productos">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"></circle>
+              <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            </svg>
+          </a>
+
+          <a class="nav-icon-btn" href="carrito.html" aria-label="Ver carrito">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7H20L18.5 19H5.5L4 7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+              <path d="M9 7V5.8C9 4.25 10.25 3 11.8 3H12.2C13.75 3 15 4.25 15 5.8V7" stroke="currentColor" stroke-width="1.6"></path>
+            </svg>
+            <span
+              data-cart-count
+              style="display:none;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--crimson);color:#fff;font-size:10px;align-items:center;justify-content:center;"
+            >0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" data-mobile-menu aria-label="Menú móvil">
+    <div class="mobile-menu-inner">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
+        <a class="site-logo" href="index.html" aria-label="DOS MARES">
+          <img src="assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <button
+          type="button"
+          data-mobile-close
+          aria-label="Cerrar menú"
+          style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a href="tienda.html?filter=women">Mujer</a>
+      <a href="tienda.html?filter=men">Hombre</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="pages/nosotros.html">Nosotros</a>
+      <a href="carrito.html">Carrito</a>
+      <a href="pages/envios.html">Envíos</a>
+      <a href="pages/devoluciones.html">Devoluciones</a>
+      <a href="pages/terminos.html">Términos</a>
+      <a href="pages/privacidad.html">Privacidad</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <span class="eyebrow">Compra</span>
+        <h1 class="page-intro-title">Carrito</h1>
+        <p class="page-intro-text">
+          Revisa tu selección, ajusta cantidades y finaliza tu pedido por WhatsApp.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div id="cartPageRoot"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+          <p class="footer-copy">
+            Entre dos mares nace una nueva forma de vestir. Piezas editoriales con una presencia sobria, moderna y costera.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tienda</h4>
+          <a href="tienda.html?filter=women">Mujer</a>
+          <a href="tienda.html?filter=men">Hombre</a>
+          <a href="tienda.html?filter=nuevo">Nueva colección</a>
+          <a href="tienda.html">Ver todo</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ayuda</h4>
+          <a href="pages/envios.html">Envíos</a>
+          <a href="pages/devoluciones.html">Devoluciones</a>
+          <a href="pages/terminos.html">Términos</a>
+          <a href="pages/privacidad.html">Privacidad</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Marca</h4>
+          <a href="pages/nosotros.html">Nosotros</a>
+          <a href="index.html">Inicio</a>
+          <a href="tienda.html">Tienda</a>
+          <a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>2026 DOS MARES — Todos los derechos reservados</span>
+        <span>Entre dos mares.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/ui.js"></script>
+
+  <script>
+    const CartPage = (() => {
+      function init() {
+        UI.init();
+        renderCartPage();
+
+        window.addEventListener("cart:updated", () => {
+          renderCartPage();
+        });
+      }
+
+      function renderCartPage() {
+        const root = document.getElementById("cartPageRoot");
+        if (!root) return;
+
+        const summary = Cart.getSummary();
+        const items = summary.items || [];
+
+        if (!items.length) {
+          root.innerHTML = `
+            <div class="empty-state">
+              <span class="eyebrow">Aún vacío</span>
+              <h2 class="empty-state-title">Tu carrito todavía no empieza</h2>
+              <p class="empty-state-text">
+                Explora la tienda, agrega tus piezas favoritas y vuelve aquí para finalizar tu pedido.
+              </p>
+              <a class="btn btn-primary" href="tienda.html">Ir a la tienda</a>
+            </div>
+          `;
+          return;
+        }
+
+        root.innerHTML = `
+          <div class="cart-page-grid">
+            <div class="cart-list reveal in">
+              <div class="cart-list-header">
+                <div>
+                  <h2 class="cart-list-title">Tu selección</h2>
+                  <div class="cart-list-count">
+                    ${summary.count} ${summary.count === 1 ? "producto" : "productos"}
+                  </div>
+                </div>
+
+                <button class="btn btn-outline btn-sm" type="button" id="clearCartBtn">
+                  Vaciar carrito
+                </button>
+              </div>
+
+              <div class="cart-items">
+                ${items.map(renderCartItem).join("")}
+              </div>
+            </div>
+
+            <aside class="cart-summary-box reveal d1 in">
+              <h3 class="cart-summary-title">Resumen</h3>
+
+              <div class="cart-summary">
+                <div class="cart-summary-line">
+                  <span>Subtotal</span>
+                  <strong>${Utils.formatCOP(summary.subtotal)}</strong>
+                </div>
+
+                <div class="cart-summary-line">
+                  <span>Envío</span>
+                  <span>Se coordina por WhatsApp</span>
+                </div>
+
+                <div class="cart-summary-line cart-summary-total">
+                  <span>Total</span>
+                  <strong>${Utils.formatCOP(summary.subtotal)}</strong>
+                </div>
+              </div>
+
+              <div class="cart-summary-actions">
+                <a
+                  class="btn btn-primary"
+                  href="${Cart.getWhatsAppURL("573000000000")}"
+                  target="_blank"
+                  rel="noopener"
+                  id="checkoutWhatsAppBtn"
+                >
+                  Finalizar por WhatsApp
+                </a>
+
+                <a class="btn btn-light" href="tienda.html">
+                  Seguir comprando
+                </a>
+              </div>
+
+              <p class="cart-summary-note">
+                Al continuar, se abrirá WhatsApp con el resumen de tu pedido listo para enviar.
+              </p>
+            </aside>
+          </div>
+        `;
+
+        bindCartActions();
+      }
+
+      function renderCartItem(item) {
+        const product = item.product;
+        const visual = StoreData.resolveProductVisual(product);
+
+        return `
+          <article class="cart-item-card">
+            <a
+              href="producto.html?id=${encodeURIComponent(product.id)}"
+              class="cart-item-media"
+              style="background:${visual.gradient};"
+              aria-label="Ver ${Utils.escapeHTML(product.name)}"
+            >
+              ${
+                visual.hasImage
+                  ? `<img
+                      src="${visual.image}"
+                      alt="${Utils.escapeHTML(visual.alt)}"
+                      loading="lazy"
+                      onerror="this.style.display='none'; this.parentElement.style.background='${visual.gradient.replace(/'/g, "\\'")}';"
+                    >`
+                  : ""
+              }
+            </a>
+
+            <div>
+              <div class="cart-item-head">
+                <div>
+                  <h3 class="cart-item-name">
+                    <a href="producto.html?id=${encodeURIComponent(product.id)}">
+                      ${Utils.escapeHTML(product.name)}
+                    </a>
+                  </h3>
+
+                  <div class="cart-item-meta">
+                    ${StoreData.getCategoryLabel(product.gender)} — ${StoreData.getCategoryLabel(product.category)}
+                  </div>
+                </div>
+
+                <button
+                  class="cart-remove-btn"
+                  type="button"
+                  data-remove-cart="${product.id}"
+                >
+                  Eliminar
+                </button>
+              </div>
+
+              <p class="cart-item-desc">
+                ${Utils.escapeHTML(product.description)}
+              </p>
+
+              <div class="cart-item-footer">
+                <div class="qty-control">
+                  <button
+                    class="qty-btn"
+                    type="button"
+                    data-decrease-cart="${product.id}"
+                    aria-label="Disminuir cantidad"
+                  >−</button>
+
+                  <input
+                    class="qty-input"
+                    type="text"
+                    value="${item.qty}"
+                    readonly
+                    aria-label="Cantidad"
+                  />
+
+                  <button
+                    class="qty-btn"
+                    type="button"
+                    data-increase-cart="${product.id}"
+                    aria-label="Aumentar cantidad"
+                  >+</button>
+                </div>
+
+                <div class="cart-item-total">
+                  ${Utils.formatCOP(item.lineTotal)}
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function bindCartActions() {
+        document.getElementById("clearCartBtn")?.addEventListener("click", () => {
+          Cart.clear();
+          UI.showToast("Carrito vaciado.");
+        });
+
+        Utils.qsa("[data-remove-cart]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const productId = button.getAttribute("data-remove-cart");
+            Cart.remove(productId);
+            UI.showToast("Producto eliminado del carrito.");
+          });
+        });
+
+        Utils.qsa("[data-increase-cart]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const productId = button.getAttribute("data-increase-cart");
+            Cart.increase(productId, 1);
+          });
+        });
+
+        Utils.qsa("[data-decrease-cart]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const productId = button.getAttribute("data-decrease-cart");
+            Cart.decrease(productId, 1);
+          });
+        });
+      }
+
+      return { init };
+    })();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      CartPage.init();
+    });
+  </script>
+</body>
+</html>

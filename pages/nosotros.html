@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOS MARES — Nosotros</title>
+  <meta
+    name="description"
+    content="Conoce la esencia de DOS MARES, una marca de moda premium construida entre contraste, calma y carácter."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/tienda.css" />
+
+  <style>
+    .about-hero{
+      background:linear-gradient(145deg,#1c1210 0%, #561c24 50%, #8c745d 100%);
+      color:#fff;
+      padding:90px 0 84px;
+    }
+
+    .about-hero-title{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(44px,6vw,76px);
+      line-height:.95;
+      letter-spacing:.04em;
+      margin:14px 0 18px;
+      max-width:760px;
+    }
+
+    .about-hero-text{
+      max-width:680px;
+      font-size:15px;
+      line-height:2;
+      color:rgba(255,255,255,.82);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:34px;
+      align-items:start;
+    }
+
+    .about-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:28px;
+      box-shadow:var(--shadow-soft);
+      height:100%;
+    }
+
+    .about-card h2{
+      font-family:"Cormorant Garamond",serif;
+      font-size:36px;
+      line-height:1.05;
+      margin:10px 0 14px;
+    }
+
+    .about-card p{
+      font-size:14px;
+      line-height:1.95;
+      color:var(--mid);
+    }
+
+    .about-values{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .value-card{
+      background:var(--off);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      padding:24px 20px;
+    }
+
+    .value-card h3{
+      font-family:"Cormorant Garamond",serif;
+      font-size:28px;
+      line-height:1.05;
+      margin:10px 0 12px;
+    }
+
+    .value-card p{
+      font-size:13px;
+      line-height:1.85;
+      color:var(--mid);
+    }
+
+    .brand-band{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:480px;
+      overflow:hidden;
+      border-radius:var(--radius-lg);
+      background:var(--dark);
+      color:var(--cream);
+    }
+
+    .brand-band-visual{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(145deg,#561c24,#1c1210);
+      overflow:hidden;
+    }
+
+    .brand-band-visual svg{
+      opacity:.16;
+    }
+
+    .brand-band-copy{
+      padding:64px 56px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .brand-band-copy h2{
+      font-family:"Cormorant Garamond",serif;
+      font-size:42px;
+      line-height:1.04;
+      margin:12px 0 18px;
+    }
+
+    .brand-band-copy p{
+      font-size:14px;
+      line-height:1.95;
+      color:rgba(232,216,196,.74);
+      max-width:520px;
+    }
+
+    .about-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    @media (max-width: 980px){
+      .about-grid,
+      .brand-band{
+        grid-template-columns:1fr;
+      }
+
+      .about-values{
+        grid-template-columns:1fr;
+      }
+
+      .brand-band-copy{
+        padding:42px 24px;
+      }
+
+      .brand-band-visual{
+        min-height:240px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .about-hero{
+        padding:70px 0 64px;
+      }
+
+      .about-card{
+        padding:22px 18px;
+      }
+
+      .about-card h2{
+        font-size:30px;
+      }
+
+      .brand-band-copy h2{
+        font-size:34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement-bar">
+    <div class="container">
+      <div class="announcement-inner">
+        <span>Nueva colección Verano 2026</span>
+        <span>—</span>
+        <span>Envío gratis sobre $150.000</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay></div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <button
+          class="mobile-toggle"
+          type="button"
+          data-mobile-toggle
+          aria-label="Abrir menú"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav-left" aria-label="Navegación principal">
+          <div class="nav-item"><a class="nav-link" href="../tienda.html?filter=women">Mujer</a></div>
+          <div class="nav-item"><a class="nav-link" href="../tienda.html?filter=men">Hombre</a></div>
+          <div class="nav-item"><a class="nav-link" href="../tienda.html">Tienda</a></div>
+          <div class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></div>
+        </nav>
+
+        <a class="site-logo" href="../index.html" aria-label="Ir al inicio de DOS MARES">
+          <img src="../assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <div class="nav-right">
+          <a class="nav-icon-btn" href="../tienda.html" aria-label="Buscar productos">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"></circle>
+              <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            </svg>
+          </a>
+
+          <a class="nav-icon-btn" href="../carrito.html" aria-label="Ver carrito">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7H20L18.5 19H5.5L4 7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+              <path d="M9 7V5.8C9 4.25 10.25 3 11.8 3H12.2C13.75 3 15 4.25 15 5.8V7" stroke="currentColor" stroke-width="1.6"></path>
+            </svg>
+            <span
+              data-cart-count
+              style="display:none;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--crimson);color:#fff;font-size:10px;align-items:center;justify-content:center;"
+            >0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" data-mobile-menu aria-label="Menú móvil">
+    <div class="mobile-menu-inner">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
+        <a class="site-logo" href="../index.html" aria-label="DOS MARES">
+          <img src="../assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <button
+          type="button"
+          data-mobile-close
+          aria-label="Cerrar menú"
+          style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a href="../tienda.html?filter=women">Mujer</a>
+      <a href="../tienda.html?filter=men">Hombre</a>
+      <a href="../tienda.html">Tienda</a>
+      <a href="../index.html">Inicio</a>
+      <a href="../carrito.html">Carrito</a>
+      <a href="envios.html">Envíos</a>
+      <a href="devoluciones.html">Devoluciones</a>
+      <a href="terminos.html">Términos</a>
+      <a href="privacidad.html">Privacidad</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <span class="eyebrow" style="color:rgba(255,255,255,.7);">Nosotros</span>
+        <h1 class="about-hero-title">DOS MARES nace del equilibrio entre contraste, calma y presencia.</h1>
+        <p class="about-hero-text">
+          La marca propone una forma de vestir donde lo esencial no es simple, sino preciso. Cada pieza busca transmitir una identidad que combina fuerza visual, limpieza formal y una sensibilidad costera contemporánea.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="about-grid">
+          <article class="about-card reveal">
+            <span class="eyebrow">Origen</span>
+            <h2>Dos fuerzas que se encuentran</h2>
+            <p>
+              DOS MARES representa el encuentro entre dos energías complementarias: lo masculino y lo femenino, la estructura y el movimiento, la sobriedad y la expresión. La marca se construye desde esa dualidad, no como oposición, sino como equilibrio.
+            </p>
+          </article>
+
+          <article class="about-card reveal d1">
+            <span class="eyebrow">Dirección</span>
+            <h2>Una estética sobria con carácter</h2>
+            <p>
+              Nuestra visión es desarrollar piezas con presencia editorial, líneas limpias, tonos profundos y una lectura visual refinada. Queremos que cada colección conserve una identidad clara, elegante y reconocible, sin caer en el exceso.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-header-left">
+            <span class="eyebrow">Valores</span>
+            <h2 class="section-title" style="margin-top:10px;">Lo que define a DOS MARES</h2>
+          </div>
+        </div>
+
+        <div class="about-values">
+          <article class="value-card reveal">
+            <span class="eyebrow">01</span>
+            <h3>Sobriedad</h3>
+            <p>
+              Diseñamos desde la contención, cuidando que cada decisión visual tenga intención y permanencia.
+            </p>
+          </article>
+
+          <article class="value-card reveal d1">
+            <span class="eyebrow">02</span>
+            <h3>Identidad</h3>
+            <p>
+              No buscamos llenar espacio con ruido, sino construir una presencia reconocible y coherente.
+            </p>
+          </article>
+
+          <article class="value-card reveal d2">
+            <span class="eyebrow">03</span>
+            <h3>Contraste</h3>
+            <p>
+              La fuerza de la marca vive en la tensión entre suavidad y carácter, calma y profundidad.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="brand-band reveal">
+          <div class="brand-band-visual">
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none" aria-hidden="true">
+              <path d="M40,180 Q120,100 180,180 Q240,260 320,180" stroke="#c7b7a3" stroke-width="1.5" fill="none"/>
+              <path d="M40,180 Q120,260 180,180 Q240,100 320,180" stroke="#e8d8c4" stroke-width="1" fill="none"/>
+              <circle cx="180" cy="180" r="100" stroke="#c7b7a3" stroke-width="0.5" fill="none"/>
+              <circle cx="180" cy="180" r="140" stroke="#c7b7a3" stroke-width="0.3" fill="none"/>
+            </svg>
+          </div>
+
+          <div class="brand-band-copy">
+            <span class="eyebrow">Marca</span>
+            <h2>Vestir entre dos mares</h2>
+            <p>
+              Más que vender ropa, DOS MARES quiere construir una atmósfera. Una forma de habitar la imagen personal desde la elegancia, la calma visual y un carácter definido.
+            </p>
+
+            <div class="about-actions">
+              <a class="btn btn-primary" href="../tienda.html">Explorar tienda</a>
+              <a class="btn btn-light" href="../index.html">Volver al inicio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+          <p class="footer-copy">
+            Entre dos mares nace una nueva forma de vestir. Piezas editoriales con una presencia sobria, moderna y costera.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tienda</h4>
+          <a href="../tienda.html?filter=women">Mujer</a>
+          <a href="../tienda.html?filter=men">Hombre</a>
+          <a href="../tienda.html?filter=nuevo">Nueva colección</a>
+          <a href="../tienda.html">Ver todo</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ayuda</h4>
+          <a href="envios.html">Envíos</a>
+          <a href="devoluciones.html">Devoluciones</a>
+          <a href="terminos.html">Términos</a>
+          <a href="privacidad.html">Privacidad</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Marca</h4>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="../index.html">Inicio</a>
+          <a href="../carrito.html">Carrito</a>
+          <a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>2026 DOS MARES — Todos los derechos reservados</span>
+        <span>Entre dos mares.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      UI.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOS MARES — Producto</title>
+  <meta
+    name="description"
+    content="Detalle de producto de DOS MARES. Moda premium para mujer y hombre."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/tienda.css" />
+</head>
+<body>
+  <div class="announcement-bar">
+    <div class="container">
+      <div class="announcement-inner">
+        <span>Nueva colección Verano 2026</span>
+        <span>—</span>
+        <span>Envío gratis sobre $150.000</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay></div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <button
+          class="mobile-toggle"
+          type="button"
+          data-mobile-toggle
+          aria-label="Abrir menú"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav-left" aria-label="Navegación principal">
+          <div class="nav-item">
+            <a class="nav-link" href="tienda.html?filter=women">Mujer</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="tienda.html?filter=men">Hombre</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="tienda.html">Tienda</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="pages/nosotros.html">Nosotros</a>
+          </div>
+        </nav>
+
+        <a class="site-logo" href="index.html" aria-label="Ir al inicio de DOS MARES">
+          <img src="assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <div class="nav-right">
+          <a class="nav-icon-btn" href="tienda.html" aria-label="Buscar productos">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"></circle>
+              <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            </svg>
+          </a>
+
+          <a class="nav-icon-btn" href="carrito.html" aria-label="Ver carrito">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7H20L18.5 19H5.5L4 7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+              <path d="M9 7V5.8C9 4.25 10.25 3 11.8 3H12.2C13.75 3 15 4.25 15 5.8V7" stroke="currentColor" stroke-width="1.6"></path>
+            </svg>
+            <span
+              data-cart-count
+              style="display:none;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--crimson);color:#fff;font-size:10px;align-items:center;justify-content:center;"
+            >0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" data-mobile-menu aria-label="Menú móvil">
+    <div class="mobile-menu-inner">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;">
+        <a class="site-logo" href="index.html" aria-label="DOS MARES">
+          <img src="assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+        </a>
+
+        <button
+          type="button"
+          data-mobile-close
+          aria-label="Cerrar menú"
+          style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a href="tienda.html?filter=women">Mujer</a>
+      <a href="tienda.html?filter=men">Hombre</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="pages/nosotros.html">Nosotros</a>
+      <a href="carrito.html">Carrito</a>
+      <a href="pages/envios.html">Envíos</a>
+      <a href="pages/devoluciones.html">Devoluciones</a>
+      <a href="pages/terminos.html">Términos</a>
+      <a href="pages/privacidad.html">Privacidad</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <span class="eyebrow">Detalle de producto</span>
+        <h1 class="page-intro-title">Producto</h1>
+        <p class="page-intro-text">
+          Descubre los detalles, colores, tallas y carácter de cada pieza de DOS MARES.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div id="productDetailRoot"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-header-left">
+            <span class="eyebrow">Sugerencias</span>
+            <h2 class="section-title" style="margin-top:10px;">También te puede interesar</h2>
+          </div>
+          <a class="section-link" href="tienda.html">Volver a tienda</a>
+        </div>
+
+        <div class="product-grid" id="relatedProducts"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logos/logo-dos-mares.svg" alt="DOS MARES" />
+          <p class="footer-copy">
+            Entre dos mares nace una nueva forma de vestir. Piezas editoriales con una presencia sobria, moderna y costera.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tienda</h4>
+          <a href="tienda.html?filter=women">Mujer</a>
+          <a href="tienda.html?filter=men">Hombre</a>
+          <a href="tienda.html?filter=nuevo">Nueva colección</a>
+          <a href="tienda.html">Ver todo</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ayuda</h4>
+          <a href="pages/envios.html">Envíos</a>
+          <a href="pages/devoluciones.html">Devoluciones</a>
+          <a href="pages/terminos.html">Términos</a>
+          <a href="pages/privacidad.html">Privacidad</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Marca</h4>
+          <a href="pages/nosotros.html">Nosotros</a>
+          <a href="index.html">Inicio</a>
+          <a href="carrito.html">Carrito</a>
+          <a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>2026 DOS MARES — Todos los derechos reservados</span>
+        <span>Entre dos mares.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/ui.js"></script>
+
+  <script>
+    const ProductPage = (() => {
+      function init() {
+        UI.init();
+        renderProduct();
+      }
+
+      function renderProduct() {
+        const root = document.getElementById("productDetailRoot");
+        const relatedRoot = document.getElementById("relatedProducts");
+        if (!root) return;
+
+        const id = Utils.getQueryParam("id");
+        const product = StoreData.getProductById(id);
+
+        if (!product) {
+          root.innerHTML = `
+            <div class="empty-state">
+              <span class="eyebrow">Producto no encontrado</span>
+              <h2 class="empty-state-title">Esta pieza no está disponible</h2>
+              <p class="empty-state-text">
+                Puede que el enlace esté incompleto o que el producto ya no esté activo.
+              </p>
+              <a class="btn btn-primary" href="tienda.html">Volver a la tienda</a>
+            </div>
+          `;
+          if (relatedRoot) relatedRoot.innerHTML = "";
+          return;
+        }
+
+        document.title = `DOS MARES — ${product.name}`;
+
+        const visual = StoreData.resolveProductVisual(product);
+        const wished = Wishlist.has(product.id);
+
+        root.innerHTML = `
+          <div class="product-detail reveal in">
+            <div class="product-gallery">
+              <div class="product-gallery-main" style="background:${visual.gradient};">
+                ${
+                  visual.hasImage
+                    ? `<img
+                        src="${visual.image}"
+                        alt="${Utils.escapeHTML(visual.alt)}"
+                        loading="eager"
+                        onerror="this.style.display='none'; this.parentElement.style.background='${visual.gradient.replace(/'/g, "\\'")}';"
+                      >`
+                    : ""
+                }
+              </div>
+            </div>
+
+            <div class="product-detail-info">
+              <span class="eyebrow">${StoreData.getCategoryLabel(product.gender)} — ${StoreData.getCategoryLabel(product.category)}</span>
+              <h2 class="product-detail-title">${Utils.escapeHTML(product.name)}</h2>
+
+              <div class="product-detail-price">
+                ${Utils.formatCOP(product.price)}
+                ${
+                  product.oldPrice
+                    ? `<span class="product-detail-old-price">${Utils.formatCOP(product.oldPrice)}</span>`
+                    : ""
+                }
+              </div>
+
+              <p class="product-detail-text">${Utils.escapeHTML(product.description)}</p>
+
+              <div class="product-detail-meta">
+                <div class="product-detail-block">
+                  <h4>Colores</h4>
+                  <div class="meta-pills">
+                    ${(product.colors || []).map(color => `<span class="meta-pill">${Utils.escapeHTML(color)}</span>`).join("")}
+                  </div>
+                </div>
+
+                <div class="product-detail-block">
+                  <h4>Tallas</h4>
+                  <div class="meta-pills">
+                    ${(product.sizes || []).map(size => `<span class="meta-pill">${Utils.escapeHTML(size)}</span>`).join("")}
+                  </div>
+                </div>
+
+                <div class="product-detail-block">
+                  <h4>Colección</h4>
+                  <div class="meta-pills">
+                    <span class="meta-pill">${StoreData.getCategoryLabel(product.collection)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;">
+                <button class="btn btn-primary" type="button" id="addToCartBtn">
+                  Agregar al carrito
+                </button>
+
+                <button class="btn btn-outline" type="button" id="toggleWishlistBtn">
+                  ${wished ? "Quitar de favoritos" : "Guardar en favoritos"}
+                </button>
+
+                <a class="btn btn-light" href="carrito.html">
+                  Ir al carrito
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        bindProductActions(product);
+        renderRelatedProducts(product);
+      }
+
+      function bindProductActions(product) {
+        const addBtn = document.getElementById("addToCartBtn");
+        const wishBtn = document.getElementById("toggleWishlistBtn");
+
+        if (addBtn) {
+          addBtn.addEventListener("click", () => {
+            const ok = Cart.add(product.id, 1);
+            if (ok) {
+              UI.showToast("Producto agregado al carrito.");
+            }
+          });
+        }
+
+        if (wishBtn) {
+          wishBtn.addEventListener("click", () => {
+            const added = Wishlist.toggle(product.id);
+            wishBtn.textContent = added ? "Quitar de favoritos" : "Guardar en favoritos";
+            UI.showToast(
+              added
+                ? "Producto guardado en favoritos."
+                : "Producto eliminado de favoritos."
+            );
+          });
+        }
+      }
+
+      function renderRelatedProducts(currentProduct) {
+        const root = document.getElementById("relatedProducts");
+        if (!root) return;
+
+        const related = StoreData.getAllProducts()
+          .filter((product) => product.id !== currentProduct.id)
+          .filter((product) =>
+            product.gender === currentProduct.gender ||
+            product.category === currentProduct.category
+          )
+          .slice(0, 4);
+
+        if (!related.length) {
+          root.innerHTML = "";
+          return;
+        }
+
+        root.innerHTML = related.map((product, index) => {
+          const visual = StoreData.resolveProductVisual(product);
+          const staggerClass = index % 3 === 0 ? "" : index % 3 === 1 ? "d1" : "d2";
+
+          return `
+            <article class="product-card reveal ${staggerClass}">
+              <a
+                href="producto.html?id=${encodeURIComponent(product.id)}"
+                class="product-media"
+                style="background:${visual.gradient};"
+                aria-label="Ver ${Utils.escapeHTML(product.name)}"
+              >
+                ${
+                  visual.hasImage
+                    ? `<img
+                        src="${visual.image}"
+                        alt="${Utils.escapeHTML(visual.alt)}"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.parentElement.style.background='${visual.gradient.replace(/'/g, "\\'")}';"
+                      >`
+                    : ""
+                }
+
+                <div class="product-badge-wrap">
+                  ${product.badge ? `<span class="badge badge-new">${product.badge}</span>` : ""}
+                </div>
+              </a>
+
+              <div class="product-info">
+                <div class="product-info-top">
+                  <span class="product-category">
+                    ${StoreData.getCategoryLabel(product.gender)} — ${StoreData.getCategoryLabel(product.category)}
+                  </span>
+                </div>
+
+                <h3 class="product-title">
+                  <a href="producto.html?id=${encodeURIComponent(product.id)}">
+                    ${Utils.escapeHTML(product.name)}
+                  </a>
+                </h3>
+
+                <p class="product-description">${Utils.escapeHTML(product.description)}</p>
+
+                <div class="product-bottom">
+                  <div class="product-price">
+                    ${Utils.formatCOP(product.price)}
+                    ${
+                      product.oldPrice
+                        ? `<span style="margin-left:8px;color:var(--mid);text-decoration:line-through;font-size:12px;">${Utils.formatCOP(product.oldPrice)}</span>`
+                        : ""
+                    }
+                  </div>
+                </div>
+
+                <div class="product-actions-row">
+                  <a class="btn btn-outline btn-sm" href="producto.html?id=${encodeURIComponent(product.id)}">
+                    Ver producto
+                  </a>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        UI.initReveal();
+      }
+
+      return { init };
+    })();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      ProductPage.init();
+    });
+  </script>
+</body>
+</html>
