@@ -398,7 +398,7 @@ const TiendaPage = (() => {
       }
 
       return `
-        <article class="product-card reveal ${index % 3 === 1 ? "d1" : index % 3 === 2 ? "d2" : ""}">
+          <article class="product-card ${isSoldOut ? "sold-out" : ""} reveal ${index % 3 === 1 ? "d1" : index % 3 === 2 ? "d2" : ""}">
           <div class="product-media" data-slider-root="${sliderId}">
             <div class="product-media-bg" style="background:${visual.gradient};"></div>
             ${createSliderMarkup(visual.images, visual.alt, sliderId, "data-slider-dot", "data-slider-id")}
@@ -429,10 +429,15 @@ const TiendaPage = (() => {
             </div>
 
             <div class="product-footer">
-              <button class="btn btn-add" type="button" data-action="${isSoldOut ? "" : (hasMultipleSizes ? "quick-view" : "add-to-cart")}" data-id="${product.id}">
-                ${addLabel}
-                ${isSoldOut ? "disabled" : ""}
-              </button>
+              <button
+                  class="btn btn-add"
+                  type="button"
+                  data-action="${isSoldOut ? "" : (hasMultipleSizes ? "quick-view" : "add-to-cart")}"
+                  data-id="${product.id}"
+                  ${isSoldOut ? "disabled" : ""}
+                >
+                  ${addLabel}
+                </button>
               <button class="btn btn-view" type="button" data-action="quick-view" data-id="${product.id}" aria-label="Ver detalle rápido">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M12 5c-5.2 0-9.27 4.11-10 7 .73 2.89 4.8 7 10 7s9.27-4.11 10-7c-.73-2.89-4.8-7-10-7Z" stroke="currentColor" stroke-width="1.4"/>
@@ -849,36 +854,51 @@ const TiendaPage = (() => {
     refs.searchInput.value = "";
 
     refs.productGrid.innerHTML = wishlistProducts.map((product) => {
-      const visual = StoreData.resolveProductVisual(product);
-      const sliderId = `wish-${product.id}`;
-      const activeSizes = getProductActiveSizes(product);
-      const hasMultipleSizes = activeSizes.length > 1;
-      const addLabel = hasMultipleSizes ? "Elegir talla" : "Agregar al carrito";
+  const visual = StoreData.resolveProductVisual(product);
+  const sliderId = `wish-${product.id}`;
+  const activeSizes = getProductActiveSizes(product);
+  const hasMultipleSizes = activeSizes.length > 1;
+  const isSoldOut = product.soldOut === true;
 
-      return `
-        <article class="product-card">
-          <div class="product-media" data-slider-root="${sliderId}">
-            <div class="product-media-bg" style="background:${visual.gradient};"></div>
-            ${createSliderMarkup(visual.images, visual.alt, sliderId, "data-slider-dot", "data-slider-id")}
-            <span class="product-tag">Favorito</span>
-          </div>
+  let addLabel;
+  if (isSoldOut) {
+    addLabel = "Agotado";
+  } else if (hasMultipleSizes) {
+    addLabel = "Ver producto";
+  } else {
+    addLabel = "Agregar al carrito";
+  }
 
-          <div class="product-info">
-            <p class="product-meta">${labelGender(product.gender)} — ${labelCategory(product.category)}</p>
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-desc">${product.description}</p>
+  return `
+    <article class="product-card ${isSoldOut ? "sold-out" : ""}">
+      <div class="product-media" data-slider-root="${sliderId}">
+        <div class="product-media-bg" style="background:${visual.gradient};"></div>
+        ${createSliderMarkup(visual.images, visual.alt, sliderId, "data-slider-dot", "data-slider-id")}
+        <span class="product-tag">${isSoldOut ? "Agotado" : "Favorito"}</span>
+      </div>
 
-            <div class="product-footer">
-              <button class="btn btn-add" type="button" data-action="${isSoldOut ? "" : (hasMultipleSizes ? "quick-view" : "add-to-cart")}" data-id="${product.id}">
-                ${addLabel}
-                ${isSoldOut ? "disabled" : ""}
-              </button>
-              <button class="btn btn-view" type="button" data-action="quick-view" data-id="${product.id}" aria-label="Ver detalle rápido">+</button>
-            </div>
-          </div>
-        </article>
-      `;
-    }).join("");
+      <div class="product-info">
+        <p class="product-meta">${labelGender(product.gender)} — ${labelCategory(product.category)}</p>
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-desc">${product.description}</p>
+
+        <div class="product-footer">
+          <button
+            class="btn btn-add"
+            type="button"
+            data-action="${isSoldOut ? "" : (hasMultipleSizes ? "quick-view" : "add-to-cart")}"
+            data-id="${product.id}"
+            ${isSoldOut ? "disabled" : ""}
+          >
+            ${addLabel}
+          </button>
+
+          <button class="btn btn-view" type="button" data-action="quick-view" data-id="${product.id}" aria-label="Ver detalle rápido">+</button>
+        </div>
+      </div>
+    </article>
+  `;
+}).join("");
 
     initSliders();
     UI.showToast("Mostrando tus favoritos.");
