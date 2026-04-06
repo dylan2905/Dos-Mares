@@ -58,31 +58,6 @@ const StoreData = (() => {
     },
 
     {
-      id: "dm-002",
-      slug: "short-mujer",
-      name: "Short",
-      gender: "women",
-      category: "shorts",
-      collection: "nuevo",
-      price: 60000,
-      oldPrice: null,
-      badge: "Nuevo",
-      featured: true,
-      description:
-        "Short femenino de línea limpia y actitud relajada, ideal para looks ligeros con identidad premium.",
-      sizes: [
-        { label: "S", active: false },
-        { label: "M", active: true },
-        { label: "L", active: false },
-      ],
-      images: [
-        "assets/img/productos/short-mujer-1.jpg",
-      ],
-      imageAlt: "Short de mujer de DOS MARES",
-      gradient: "linear-gradient(145deg,#d8c4af 0%,#b79777 50%,#8b694f 100%)",
-    },
-
-    {
       id: "dm-003",
       slug: "conjunto-ancla",
       name: "Conjunto Ancla",
