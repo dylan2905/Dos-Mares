@@ -132,7 +132,6 @@ const StoreData = (() => {
       images: [
         "assets/img/CATALOGO/Hombres/CAMISA/IMG_1598.jpg",
         "assets/img/CATALOGO/Hombres/CAMISA/IMG_1602.jpg",
-        "assets/img/CATALOGO/Hombres/CAMISA/IMG_1604.jpg",
       ],
       imageAlt: "Camisa Olas de DOS MARES",
       gradient: "linear-gradient(145deg,#4d1a22 0%,#6f2c37 50%,#9a6d67 100%)",
