@@ -533,8 +533,13 @@ const TiendaPage = (() => {
   }
 
   function addToCart(id, qty = 1, sizeOverride = null) {
-    const product = getProduct(id);
-    if (!product) return false;
+  const product = getProduct(id);
+  if (!product) return false;
+
+  if (product.soldOut === true) {
+    UI.showToast("Este producto está agotado.");
+    return false;
+  }
 
     const activeSizes = getProductActiveSizes(product);
     let selectedSize = sizeOverride || getSelectedSize(id) || "";
@@ -735,7 +740,8 @@ const TiendaPage = (() => {
     const quickSliderId = `quick-${product.id}`;
     const selectedSize = getSelectedSize(product.id) || "";
     const requiresSelection = activeSizes.length > 1;
-    const canAdd = activeSizes.length === 0 || activeSizes.length === 1 || !!selectedSize;
+    const isSoldOut = product.soldOut === true;
+    const canAdd = !isSoldOut && (activeSizes.length === 0 || activeSizes.length === 1 || !!selectedSize);
 
     if (state.sliderIntervals.has(quickSliderId)) {
       clearInterval(state.sliderIntervals.get(quickSliderId));
@@ -758,44 +764,49 @@ const TiendaPage = (() => {
       </div>
 
       ${activeSizes.length ? `
-        <div>
-          <p class="eyebrow" style="margin-bottom:10px;color:var(--mid)">
-            ${requiresSelection ? "Selecciona tu talla" : "Talla disponible"}
-          </p>
-          <div class="size-row">
-            ${activeSizes.map((size) => `
-              <button
-                class="size-pill is-selectable ${selectedSize === size ? "selected" : ""}"
-                type="button"
-                data-action="select-size"
-                data-id="${product.id}"
-                data-size="${size}"
-                aria-pressed="${selectedSize === size ? "true" : "false"}"
-              >
-                ${size}
-              </button>
-            `).join("")}
-          </div>
-          ${requiresSelection && !selectedSize ? `<p class="size-hint">Debes elegir una talla antes de agregar al carrito.</p>` : ""}
-        </div>
-      ` : ""}
+  <div>
+    <p class="eyebrow" style="margin-bottom:10px;color:var(--mid)">
+      ${isSoldOut ? "Estado" : (requiresSelection ? "Selecciona tu talla" : "Talla disponible")}
+    </p>
+    <div class="size-row">
+      ${
+        isSoldOut
+          ? `<span class="size-pill">Agotado</span>`
+          : activeSizes.map((size) => `
+            <button
+              class="size-pill is-selectable ${selectedSize === size ? "selected" : ""}"
+              type="button"
+              data-action="select-size"
+              data-id="${product.id}"
+              data-size="${size}"
+              aria-pressed="${selectedSize === size ? "true" : "false"}"
+            >
+              ${size}
+            </button>
+          `).join("")
+      }
+    </div>
+    ${!isSoldOut && requiresSelection && !selectedSize ? `<p class="size-hint">Debes elegir una talla antes de agregar al carrito.</p>` : ""}
+    ${isSoldOut ? `<p class="size-hint">Esta pieza ya no está disponible.</p>` : ""}
+  </div>
+` : ""}
 
       <div class="quick-actions">
-        <button
-          class="btn btn-add"
-          type="button"
-          data-action="add-to-cart"
-          data-id="${product.id}"
-          ${selectedSize ? `data-size="${selectedSize}"` : ""}
-          ${!canAdd ? "disabled" : ""}
-        >
-          Agregar al carrito
-        </button>
+  <button
+    class="btn btn-add"
+    type="button"
+    ${isSoldOut ? "" : `data-action="add-to-cart"`}
+    data-id="${product.id}"
+    ${selectedSize ? `data-size="${selectedSize}"` : ""}
+    ${!canAdd ? "disabled" : ""}
+  >
+    ${isSoldOut ? "Agotado" : "Agregar al carrito"}
+  </button>
 
-        <button class="btn btn-soft" type="button" data-action="toggle-wishlist" data-id="${product.id}">
-          ${wished ? "Guardado" : "Favorito"}
-        </button>
-      </div>
+  <button class="btn btn-soft" type="button" data-action="toggle-wishlist" data-id="${product.id}">
+    ${wished ? "Guardado" : "Favorito"}
+  </button>
+</div>
     `;
 
     initQuickSlider(quickSliderId);
