@@ -1,8 +1,10 @@
 html{
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
 body{
+  overflow-x:hidden;
   background:
     radial-gradient(circle at top left, rgba(199,183,163,.10) 0%, transparent 26%),
     linear-gradient(180deg, #fbf8f4 0%, #f7f1ea 100%);
@@ -213,22 +215,24 @@ MEGA MENU
 .mega-menu{
   position:absolute;
   top:18px;
-  left:56px;
-  width:min(640px, calc(100vw - 112px));
+  left:16px;
+  width:min(640px, calc(100vw - 32px));
+  max-width:calc(100vw - 32px);
   padding:28px;
   display:none;
-  grid-template-columns:160px 180px 1fr;
+  grid-template-columns:160px 180px minmax(180px, 1fr);
   gap:24px;
   background:rgba(255,255,255,.98);
   border:1px solid rgba(86,28,36,.08);
   border-radius:28px;
   box-shadow:0 24px 64px rgba(0,0,0,.10);
   pointer-events:auto;
+  box-sizing:border-box;
 }
 
 #menuWomen,
 #menuMen{
-  left:56px;
+  left:16px;
 }
 
 .mega-menu.show{
@@ -904,14 +908,15 @@ RESPONSIVE
 
 @media (max-width: 1180px){
   .mega-menu{
-    left:32px;
-    width:min(580px, calc(100vw - 64px));
-    grid-template-columns:150px 170px 1fr;
+    left:16px;
+    width:min(580px, calc(100vw - 32px));
+    max-width:calc(100vw - 32px);
+    grid-template-columns:150px 170px minmax(160px, 1fr);
   }
 
   #menuWomen,
   #menuMen{
-    left:32px;
+    left:16px;
   }
 
   .story-copy,
