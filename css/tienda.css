@@ -40,11 +40,11 @@ HEADER / TOP BAR
 ========================= */
 
 .announcement-bar{
-  position:relative;
+  position:left;
   z-index:40;
   min-height:42px;
   display:flex;
-  align-items:left;
+  align-items:center;
   border-bottom:1px solid rgba(86,28,36,.08);
   background:
     linear-gradient(90deg, rgba(28,18,16,.98) 0%, rgba(56,26,32,.96) 50%, rgba(28,18,16,.98) 100%);
