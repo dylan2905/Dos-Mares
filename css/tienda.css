@@ -40,7 +40,7 @@ HEADER / TOP BAR
 ========================= */
 
 .announcement-bar{
-  position:left;
+  position:relative;
   z-index:40;
   min-height:42px;
   display:flex;
