@@ -176,7 +176,7 @@ const StoreData = (() => {
   featured: true,
   soldOut: true, 
   description:
-    "Un enterizo en lino pensado para moverte con estilo. Un básico que no puede faltar en tu clóset.",
+    "Enterizo en lino pensado para moverte con estilo. Un básico que no puede faltar en tu clóset.",
   sizes: [
     { label: "Talla U", active: false }, 
   ],
