@@ -21,12 +21,6 @@ const UI = (() => {
       });
     });
 
-    window.addEventListener("resize", () => {
-      if (activeMenu) {
-        positionMegaMenu(activeMenu);
-      }
-    });
-
     document.addEventListener("click", (event) => {
       if (
         !event.target.closest(".nav-item") &&
@@ -38,29 +32,13 @@ const UI = (() => {
     });
   }
 
-  function getMenuMap() {
-    return {
-      women: {
-        nav: document.getElementById("navWomen"),
-        menu: document.getElementById("menuWomen")
-      },
-      men: {
-        nav: document.getElementById("navMen"),
-        menu: document.getElementById("menuMen")
-      },
-      mujer: {
-        nav: document.getElementById("navWomen"),
-        menu: document.getElementById("menuWomen")
-      },
-      hombre: {
-        nav: document.getElementById("navMen"),
-        menu: document.getElementById("menuMen")
-      }
-    };
-  }
-
   function toggleMegaMenu(id) {
-    const map = getMenuMap();
+    const map = {
+      women: { nav: document.getElementById("navWomen"), menu: document.getElementById("menuWomen") },
+      men: { nav: document.getElementById("navMen"), menu: document.getElementById("menuMen") },
+      mujer: { nav: document.getElementById("navWomen"), menu: document.getElementById("menuWomen") },
+      hombre: { nav: document.getElementById("navMen"), menu: document.getElementById("menuMen") }
+    };
 
     if (activeMenu === id) {
       closeMegaMenus();
@@ -77,49 +55,14 @@ const UI = (() => {
     target.nav?.querySelector("button")?.setAttribute("aria-expanded", "true");
 
     activeMenu = id;
-    requestAnimationFrame(() => positionMegaMenu(id));
-  }
-
-  function positionMegaMenu(id) {
-    const map = getMenuMap();
-    const target = map[id];
-    if (!target?.nav || !target?.menu) return;
-
-    const container = target.nav.closest(".container");
-    const layer = container?.querySelector(".mega-menu-layer");
-    const button = target.nav.querySelector("button");
-    const menu = target.menu;
-
-    if (!container || !layer || !button || !menu) return;
-
-    const containerRect = container.getBoundingClientRect();
-    const buttonRect = button.getBoundingClientRect();
-
-    const menuWidth = menu.offsetWidth || 640;
-    const layerWidth = layer.clientWidth || containerRect.width;
-
-    const idealLeft = (buttonRect.left - containerRect.left) - 24;
-    const maxLeft = Math.max(0, layerWidth - menuWidth);
-
-    const safeLeft = Math.min(Math.max(0, idealLeft), maxLeft);
-
-    menu.style.left = `${safeLeft}px`;
   }
 
   function closeMegaMenus() {
     ["Women", "Men"].forEach((name) => {
-      const nav = document.getElementById(`nav${name}`);
-      const menu = document.getElementById(`menu${name}`);
-
-      nav?.classList.remove("open");
-      nav?.querySelector("button")?.setAttribute("aria-expanded", "false");
-
-      if (menu) {
-        menu.classList.remove("show");
-        menu.style.left = "0px";
-      }
+      document.getElementById(`nav${name}`)?.classList.remove("open");
+      document.getElementById(`menu${name}`)?.classList.remove("show");
+      document.querySelector(`#nav${name} button`)?.setAttribute("aria-expanded", "false");
     });
-
     activeMenu = null;
   }
 
