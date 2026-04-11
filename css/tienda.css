@@ -1056,3 +1056,50 @@ RESPONSIVE
     font-size:8px;
   }
 }
+
+@media (max-width: 640px) and (orientation: portrait){
+  .header-inner{
+    min-height:72px;
+    grid-template-columns:48px 1fr 48px;
+    padding:0 10px;
+  }
+
+  .mobile-toggle{
+    width:38px;
+    height:38px;
+  }
+
+  .nav-right{
+    min-width:48px;
+    width:48px;
+    justify-self:end;
+  }
+
+  #cartToggle{
+    width:38px;
+    height:38px;
+    margin-right:0;
+  }
+
+  .site-logo{
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    max-width:calc(100% - 120px);
+  }
+
+  .site-logo a{
+    font-size:24px;
+    letter-spacing:.08em;
+    white-space:nowrap;
+  }
+
+  .bag-count{
+    top:-5px;
+    right:-5px;
+    min-width:16px;
+    height:16px;
+    font-size:8px;
+    padding:0 3px;
+  }
+}
