@@ -1103,3 +1103,14 @@ RESPONSIVE
     padding:0 3px;
   }
 }
+
+
+@media (max-width: 640px){
+  .mobile-toggle{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    justify-self:start;
+    margin-left:4px;
+  }
+}
