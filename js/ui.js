@@ -14,14 +14,19 @@ const UI = (() => {
     const buttons = document.querySelectorAll("[data-menu]");
 
     buttons.forEach((button) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
         const id = button.dataset.menu;
         toggleMegaMenu(id);
       });
     });
 
     document.addEventListener("click", (event) => {
-      if (!event.target.closest(".nav-item") && activeMenu) {
+      if (
+        !event.target.closest(".nav-item") &&
+        !event.target.closest(".mega-menu") &&
+        activeMenu
+      ) {
         closeMegaMenus();
       }
     });
@@ -41,12 +46,14 @@ const UI = (() => {
     }
 
     closeMegaMenus();
+
     const target = map[id];
     if (!target) return;
 
     target.nav?.classList.add("open");
     target.menu?.classList.add("show");
     target.nav?.querySelector("button")?.setAttribute("aria-expanded", "true");
+
     activeMenu = id;
   }
 
@@ -56,6 +63,7 @@ const UI = (() => {
       document.getElementById(`menu${name}`)?.classList.remove("show");
       document.querySelector(`#nav${name} button`)?.setAttribute("aria-expanded", "false");
     });
+
     activeMenu = null;
   }
 
@@ -78,6 +86,7 @@ const UI = (() => {
         closeMobileNav();
         closeDrawer();
         closeQuickView();
+        closeMegaMenus();
       });
     }
   }
@@ -216,7 +225,7 @@ const UI = (() => {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: .12 });
+    }, { threshold: 0.12 });
 
     reveals.forEach((el) => revealObserver.observe(el));
   }
