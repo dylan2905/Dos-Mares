@@ -1025,3 +1025,34 @@ RESPONSIVE
     grid-template-columns:1fr;
   }
 }
+
+@media (max-width: 640px){
+  .site-logo{
+    left:50%;
+    transform:translate(-50%, -50%);
+  }
+
+  .site-logo a{
+    font-size:30px;
+    letter-spacing:.07em;
+  }
+
+  .nav-right{
+    min-width:44px;
+    width:44px;
+  }
+
+  #cartToggle{
+    width:40px;
+    height:40px;
+    margin-right:2px;
+  }
+
+  .bag-count{
+    top:-6px;
+    right:-6px;
+    min-width:17px;
+    height:17px;
+    font-size:8px;
+  }
+}
