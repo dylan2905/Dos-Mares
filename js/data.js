@@ -44,7 +44,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Vestido femenino de presencia limpia y caída elegante, pensado para una estética costera sobria y refinada.",
+        "Vestido en lino de presencia limpia y caída elegante, pensado para una estética costera sobria y refinada.",
       sizes: [
         { label: "S/M", active: true },
       ],
@@ -69,7 +69,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Set femenino de dos piezas con lectura editorial, silueta pulida y una presencia sofisticada para el lanzamiento.",
+        "Set en lino con silueta pulida y una presencia sofisticada.",
       sizes: [
         { label: "S", active: true },
         { label: "M", active: true },
@@ -95,7 +95,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Conjunto femenino con aire resort y acabados suaves, construido para verse elegante sin esfuerzo.",
+        "Conjunto en lino con acabados suaves, construido para verse elegante sin esfuerzo.",
       sizes: [
         { label: "S", active: true },
         { label: "M", active: false },
@@ -122,7 +122,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Camisa masculina de estructura relajada y estética costera sobria, pensada para un armario premium.",
+        "Camisa en lino de estructura relajada y estética costera, pensada para un armario chévere.",
       sizes: [
         { label: "S", active: false },
         { label: "M", active: true },
@@ -149,7 +149,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Vestido de silueta femenina y presencia fresca, ideal para una propuesta versátil entre ciudad y costa.",
+        "Vestido en lino con presencia fresca, ideal para una propuesta versátil entre ciudad y costa.",
       sizes: [
         { label: "S", active: true },
         { label: "M", active: true },
@@ -176,7 +176,7 @@ const StoreData = (() => {
   featured: true,
   soldOut: true, 
   description:
-    "Enterizo femenino de línea limpia, visual refinado y una lectura moderna para el lanzamiento inicial.",
+    "Un enterizo en lino pensado para moverte con estilo. Un básico que no puede faltar en tu clóset.",
   sizes: [
     { label: "Talla U", active: false }, 
   ],
@@ -200,7 +200,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Vestido de lectura suave y femenina con una presencia elegante, pensado para una imagen limpia y memorable.",
+        "Vestido en lino con una presencia elegante, pensado para una imagen limpia y memorable.",
       sizes: [
         { label: "Talla U", active: true },
       ],
@@ -225,7 +225,7 @@ const StoreData = (() => {
       badge: "Nuevo",
       featured: true,
       description:
-        "Vestido femenino de expresión serena, con una silueta ligera y una estética atemporal para la colección inicial.",
+        "Vestido en lino de expresión serena, con una silueta ligera y una estética atemporal.",
       sizes: [
         { label: "S", active: true },
         { label: "M", active: true },
