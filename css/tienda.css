@@ -1115,23 +1115,15 @@ RESPONSIVE
   }
 }
 
-@media (max-width: 640px){
-  .header-inner{
-    position: relative;
-  }
+/* FIX REAL MENU ICON */
+.mobile-toggle{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+}
 
-  .mobile-toggle{
-    position: absolute !important;
-    left: 14px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    margin: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 38px !important;
-    height: 38px !important;
-    padding: 0 !important;
-    z-index: 5 !important;
-  }
+.mobile-toggle svg{
+  display:block;
+  margin:0 auto;
 }
