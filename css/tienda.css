@@ -88,6 +88,7 @@ HEADER / TOP BAR
   display:flex;
   align-items:center;
   gap:30px;
+  justify-self:start;
 }
 
 .nav-item{
@@ -113,8 +114,13 @@ HEADER / TOP BAR
 }
 
 .nav-item > button:hover,
-.nav-link:hover{
+.nav-link:hover,
+.nav-item.open > button{
   color:var(--crimson);
+}
+
+.site-logo{
+  justify-self:center;
 }
 
 .site-logo a{
@@ -132,6 +138,7 @@ HEADER / TOP BAR
   align-items:center;
   justify-content:flex-end;
   gap:8px;
+  justify-self:end;
 }
 
 .nav-icon-btn{
@@ -189,10 +196,15 @@ HEADER / TOP BAR
 MEGA MENU
 ========================= */
 
+.mega-menu-layer{
+  position:relative;
+  height:0;
+  z-index:45;
+}
+
 .mega-menu{
   position:absolute;
-  top:calc(100% + 18px);
-  left:0;
+  top:18px;
   min-width:640px;
   padding:28px;
   display:none;
@@ -202,21 +214,24 @@ MEGA MENU
   border:1px solid rgba(86,28,36,.08);
   border-radius:28px;
   box-shadow:0 24px 64px rgba(0,0,0,.10);
-  z-index:25;
+}
+
+#menuWomen{
+  left:0;
+}
+
+#menuMen{
+  left:148px;
 }
 
 .mega-menu.show{
   display:grid;
-  animation:megaMenuFade .18s cubic-bezier(.22,1,.36,1);
+  animation:megaMenuFade .16s ease;
 }
 
 @keyframes megaMenuFade{
-  from{
-    opacity:0;
-  }
-  to{
-    opacity:1;
-  }
+  from{opacity:0}
+  to{opacity:1}
 }
 
 .mega-col-title{
@@ -701,7 +716,7 @@ STORY BAND
 .editorial-text{
   font-size:14px;
   line-height:2;
-  color:#8a7560;
+  color:#6f5c4d;
 }
 
 .editorial-actions{
@@ -886,6 +901,10 @@ RESPONSIVE
     grid-template-columns:150px 170px 1fr;
   }
 
+  #menuMen{
+    left:132px;
+  }
+
   .story-copy,
   .editorial-copy{
     padding:64px 48px;
@@ -898,7 +917,7 @@ RESPONSIVE
 
 @media (max-width: 1024px){
   .header-inner{
-    grid-template-columns:auto 1fr auto;
+    grid-template-columns:1fr auto 1fr;
     gap:18px;
   }
 
@@ -925,6 +944,7 @@ RESPONSIVE
   }
 
   .header-inner{
+    grid-template-columns:auto 1fr auto;
     position:relative;
   }
 
@@ -935,6 +955,10 @@ RESPONSIVE
     position:absolute;
     left:50%;
     transform:translateX(-50%);
+  }
+
+  .mega-menu-layer{
+    display:none;
   }
 
   .hero,
@@ -1090,23 +1114,4 @@ RESPONSIVE
   .mobile-actions{
     grid-template-columns:1fr;
   }
-}
-
-.nav-left{
-  justify-self:start;
-}
-
-.site-logo{
-  justify-self:center;
-}
-
-.nav-right{
-  justify-self:end;
-}
-#navWomen .mega-menu{
-  left:-28px;
-}
-
-#navMen .mega-menu{
-  left:-56px;
 }
