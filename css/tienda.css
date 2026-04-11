@@ -922,12 +922,16 @@ RESPONSIVE
   }
 
   .header-inner{
-    grid-template-columns:auto 1fr auto;
+    position:relative;
   }
 
   .site-logo{
     display:flex;
     justify-content:center;
+    align-items:center;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
   }
 
   .hero,
