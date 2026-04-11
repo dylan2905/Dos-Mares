@@ -1110,7 +1110,7 @@ RESPONSIVE
     display:flex !important;
     align-items:center;
     justify-content:center;
-    justify-self:start;
-    margin-left:4px;
+    justify-self:center;
+    align-self:center;
   }
 }
