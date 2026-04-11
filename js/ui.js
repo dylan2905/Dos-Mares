@@ -59,10 +59,18 @@ const UI = (() => {
 
   function closeMegaMenus() {
     ["Women", "Men"].forEach((name) => {
-      document.getElementById(`nav${name}`)?.classList.remove("open");
-      document.getElementById(`menu${name}`)?.classList.remove("show");
-      document.querySelector(`#nav${name} button`)?.setAttribute("aria-expanded", "false");
+      const nav = document.getElementById(`nav${name}`);
+      const menu = document.getElementById(`menu${name}`);
+
+      nav?.classList.remove("open");
+      nav?.querySelector("button")?.setAttribute("aria-expanded", "false");
+
+      if (menu) {
+        menu.classList.remove("show");
+        menu.style.left = "";
+      }
     });
+
     activeMenu = null;
   }
 
