@@ -170,7 +170,7 @@ const StoreData = (() => {
   gender: "women",
   category: "enterizos",
   collection: "nuevo",
-  price: 80000,
+  price: 90000,
   oldPrice: null,
   badge: "Nuevo",
   featured: true,
