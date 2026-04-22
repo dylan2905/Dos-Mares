@@ -125,8 +125,8 @@ const StoreData = (() => {
         "Camisa en lino de estructura relajada y estética costera, pensada para un armario chévere.",
       sizes: [
         { label: "S", active: false },
-        { label: "M", active: true },
-        { label: "L", active: false },
+        { label: "M", active: false },
+        { label: "L", active: true },
         { label: "XL", active: false },
       ],
       images: [
