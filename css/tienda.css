@@ -1354,3 +1354,23 @@ HEADER FINAL OVERRIDE
     gap:8px !important;
   }
 }
+
+@media (max-width: 640px){
+  .nav-right{
+    justify-self: end !important;
+    width: 44px !important;
+    min-width: 44px !important;
+    margin-right: 2px !important;
+  }
+
+  #cartToggle{
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: -2px !important;
+  }
+
+  .bag-count{
+    top: -6px !important;
+    right: -8px !important;
+  }
+}
