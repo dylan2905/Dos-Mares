@@ -178,7 +178,7 @@ const StoreData = (() => {
   description:
     "Enterizo en lino pensado para moverte con estilo. Un básico que no puede faltar en tu clóset.",
   sizes: [
-    { label: "Talla U", active: false }, 
+    { label: "Talla U", active: true }, 
   ],
   images: [
     "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1593.jpg",
