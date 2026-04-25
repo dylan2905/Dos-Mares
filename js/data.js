@@ -5,6 +5,20 @@ const StoreData = (() => {
     newsletter: "dosmares_newsletter_v1",
   };
 
+  const FLASH_DISCOUNT = {
+    active: true,
+    percent: 10,
+    startsAt: new Date("2026-04-25T00:00:00"),
+    endsAt: new Date("2026-05-02T23:59:59"),
+    badge: "10% OFF",
+  };
+
+  function isFlashActive() {
+    if (!FLASH_DISCOUNT.active) return false;
+    const now = new Date();
+    return now >= FLASH_DISCOUNT.startsAt && now <= FLASH_DISCOUNT.endsAt;
+  }
+
   const FILTERS = [
     { id: "all", label: "Todo" },
     { id: "women", label: "Mujer" },
@@ -45,9 +59,7 @@ const StoreData = (() => {
       featured: true,
       description:
         "Vestido en lino de presencia limpia y caída elegante, pensado para una estética costera sobria y refinada.",
-      sizes: [
-        { label: "S/M", active: true },
-      ],
+      sizes: [{ label: "S/M", active: true }],
       images: [
         "assets/img/CATALOGO/Mujer/VESTIDOS/Vestido Mar/IMG_1620.jpg",
         "assets/img/CATALOGO/Mujer/VESTIDOS/Vestido Mar/IMG_1628.jpg",
@@ -68,8 +80,7 @@ const StoreData = (() => {
       oldPrice: null,
       badge: "Nuevo",
       featured: true,
-      description:
-        "Set en lino con silueta pulida y una presencia sofisticada.",
+      description: "Set en lino con silueta pulida y una presencia sofisticada.",
       sizes: [
         { label: "S", active: true },
         { label: "M", active: true },
@@ -164,29 +175,27 @@ const StoreData = (() => {
     },
 
     {
-  id: "dm-007",
-  slug: "enterizo-marea",
-  name: "Enterizo Marea",
-  gender: "women",
-  category: "enterizos",
-  collection: "nuevo",
-  price: 90000,
-  oldPrice: null,
-  badge: "Nuevo",
-  featured: true,
-  soldOut: true, 
-  description:
-    "Enterizo en lino pensado para moverte con estilo. Un básico que no puede faltar en tu clóset.",
-  sizes: [
-    { label: "Talla U", active: true }, 
-  ],
-  images: [
-    "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1593.jpg",
-    "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1596.jpg",
-  ],
-  imageAlt: "Enterizo Marea de DOS MARES",
-  gradient: "linear-gradient(145deg,#dcc8b6 0%,#bf9f87 50%,#8e6d58 100%)",
-},
+      id: "dm-007",
+      slug: "enterizo-marea",
+      name: "Enterizo Marea",
+      gender: "women",
+      category: "enterizos",
+      collection: "nuevo",
+      price: 90000,
+      oldPrice: null,
+      badge: "Nuevo",
+      featured: true,
+      soldOut: true,
+      description:
+        "Enterizo en lino pensado para moverte con estilo. Un básico que no puede faltar en tu clóset.",
+      sizes: [{ label: "Talla U", active: true }],
+      images: [
+        "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1593.jpg",
+        "assets/img/CATALOGO/Mujer/ENTERIZO/Enterizo Marea/IMG_1596.jpg",
+      ],
+      imageAlt: "Enterizo Marea de DOS MARES",
+      gradient: "linear-gradient(145deg,#dcc8b6 0%,#bf9f87 50%,#8e6d58 100%)",
+    },
 
     {
       id: "dm-008",
@@ -201,9 +210,7 @@ const StoreData = (() => {
       featured: true,
       description:
         "Vestido en lino con una presencia elegante, pensado para una imagen limpia y memorable.",
-      sizes: [
-        { label: "Talla U", active: true },
-      ],
+      sizes: [{ label: "Talla U", active: true }],
       images: [
         "assets/img/CATALOGO/Mujer/VESTIDOS/Vestido Coral/IMG_1657.jpg",
         "assets/img/CATALOGO/Mujer/VESTIDOS/Vestido Coral/IMG_1660.jpg",
@@ -257,12 +264,27 @@ const StoreData = (() => {
           .map((size) => (typeof size === "string" ? size : size.label))
       : [];
 
+    let finalPrice = product.price;
+    let oldPrice = product.oldPrice;
+    let badge = product.badge;
+
+    if (isFlashActive() && !product.soldOut) {
+      oldPrice = product.price;
+      finalPrice = Math.round(product.price * (1 - FLASH_DISCOUNT.percent / 100));
+      badge = FLASH_DISCOUNT.badge;
+    }
+
     return {
       ...product,
+      price: finalPrice,
+      oldPrice,
+      badge,
       images,
       image: images[0] || "",
       hasGallery: images.length > 1,
       sizesActive: activeSizes,
+      flashDiscountActive: isFlashActive() && !product.soldOut,
+      flashDiscountPercent: isFlashActive() && !product.soldOut ? FLASH_DISCOUNT.percent : 0,
     };
   }
 
@@ -346,6 +368,8 @@ const StoreData = (() => {
     FILTERS,
     CATEGORIES,
     PRODUCTS,
+    FLASH_DISCOUNT,
+    isFlashActive,
     getAllProducts,
     getProductById,
     getProductBySlug,
